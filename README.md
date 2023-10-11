@@ -35,6 +35,7 @@
 전산학 기초와 자바 프로그래밍의 기본기를 다지고, 스프링 공부까지를 목표로
 
 #### [09월 공부 계획](https://github.com/NHN-TEAM-10/Course_1/blob/main/studyPlan09.md)
+#### [10월 공부 계획](https://github.com/NHN-TEAM-10/Course_1/blob/main/studyPlan09.md)
 
 
 ### 🤝 Rule
