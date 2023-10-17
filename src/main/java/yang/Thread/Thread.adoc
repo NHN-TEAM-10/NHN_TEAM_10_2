@@ -1,0 +1,128 @@
+# Thread
+
+### Process vs Thread
+
+Process ⇒ 실행중인 프로그램, 프로그램을 실행하면 os로부터 실행에 필요한 자원(메모리), 데이터를 할당받는다.
+
+Thread ⇒ Process의 자원을 할당 받아 실제로 작업을 수행하는 것
+
+모든 Process에는 하나이상의 Thread가 필요!
+
+ex) process(공장) thread(일꾼)
+
+프로세스의 메모리에 따라 Thread의 갯수 결정
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d42d9c5e-580f-4492-b88e-64ea79bfe6e2/7b90827a-4be6-4ab5-8502-20956b9e08c1/Untitled.png)
+
+| Process | Thread |
+| --- | --- |
+| 프로그램 실행을 위한 모든 자원들을 가지고 있어서 무겁다. | 최소한의 자원들만 가져 가볍다. |
+| 각각 자체 메모리 보유 | process내 Thread들과 메모리 공유 |
+| 개별 메모리로 인해 통신이 느리다. | 공유 메모리를 이용한 직접 통신이 가능해 Thread간 통신이 빠르다 |
+| storage를 이요한 작업이 수행 될때 비용이 많이 든다. | Thread간 contex전환 공유 메모리로 인해 비용 저렴 |
+| 메모리 부족시 더 나은 메모리 활용 가능 | 메모리 부족시 Multi-threaded application은 관리 제공x |
+
+**Multi Thread**
+
+프로그램 내에서 두 개 이상의 동작을 동시에 실행 ( cpu의 코어가 아주 빠른 속도로 이동하면서 실행해서 동시에 실행하는 것처럼 보임).
+
+장점:
+
+1. CPU의 사용률을 향상시킨다.
+2. 자원을 보다 효율적으로 사용가능.
+3. 사용자에 대한 응답성 향상
+4. 작업이 분리돼 코드가 간결.
+
+단점:
+
+1. synchronization(동기화), deadlock(교착상태) 발생 가능.
+
+### Thread_Class_Extension
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/d42d9c5e-580f-4492-b88e-64ea79bfe6e2/b657da1d-d767-4079-8f97-ce1360b43340/Untitled.svg)
+
+1. Thread 클래스를 상속받는 방법
+
+```jsx
+class ThreadEx1_1 extends Thread{
+    public void run(){/*작업내용*/} // Thread클래스의 run()을 오버라이딩
+
+}
+
+ThreadEx1_1 t1 = new ThreadEx1_1();
+//subclass instance 생성
+```
+
+1. Runnable interface를 구현하는 방법
+
+```jsx
+class MyThread implements Runnable{
+    public void run(){/*작업내용*/} // Runnable interface run() 구현
+}
+
+Runnable r = new MyThread();
+Thread t2 = new Thread(r);
+
+한줄로
+Thread t2 = new Thread(new ThreadEx1_2());
+```
+
+Runnable interface
+
+```jsx
+public interface Runnalble {
+    public abstract void run();
+}
+```
+
+Thread의 이름은
+
+```jsx
+Thread(Runnable targe, String name)
+Thread(String name)
+void setName(String name)
+//을 통해서 Thread name을 지정할 수 있다.
+```
+
+Thread 실행 -start()
+
+```jsx
+t1.start()
+```
+
+한 번 실행이 종료된 Thread는 다시 실행할 수 없다!!
+
+```jsx
+MyThread t1 =new MyThread();
+t1.start();
+t1 = new MyThread();
+t1.start();
+```
+
+Thread class가 지원하는 sleep()
+
+```jsx
+static void sleep(long milliseconds)
+static void sleep(long milliseconds, int nanoseconds)
+```
+
+### start()와 run()
+
+main의 run()은 Thread를 실행하는 것이 아닌 Class에 선언된 method를 호출하는 것.
+
+start()는 Thread가 작업을 실행하는데 필요한 call stack을 생성한 다음 run()을 호출
+
+1. main에서 thread의 start 호출
+2. start()는 새로운 thread를 생성하고 thread가 작업하는데 사용될 call stack을 생성
+3. 생성된 call stack에서 run()이 호출되어 thread가 독립된 공간에서 작업 수행
+4. callstack이 2개인 경우 scheduler가 순서에 의해 번갈아 가면서 실행
+
+callstack에서 가장 위에 있는 method가 현재 실행중인 method 나머지는 대기 상태
+
+Thread가 두개 이상일 경우 가장위에 있더라도 대기상태일 수 있다.
+
+run()의 수행이 종료된 Thread는 CallStack이 비워지고 사라진다.
+
+main method 역시 하나의 Thread
+
+**실행중인 사용자 Thread가 하나도 없을 때 프로그램 종료**
