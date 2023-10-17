@@ -1,7 +1,7 @@
 ## 🦹‍ NHN Study Team 10
 김종명 (TA)|김영웅|강건|박승민|김성현|양대열|
 |:---:|:---:|:---:|:---:|:---:|:---:|
-|[lightbell03](https://github.com/lightbell03)|[Imheroman](https://github.com/NHN-TEAM-10/NHN_TEAM_10/tree/young)|[rkdrjsrks](https://github.com/NHN-TEAM-10/NHN_TEAM_10/tree/gun)|[psm4171](https://github.com/NHN-TEAM-10/NHN_TEAM_10/tree/min)|[kim-seonghyun](https://github.com/NHN-TEAM-10/NHN_TEAM_10/tree/seong)|[DaeYoul-Yang](https://github.com/NHN-TEAM-10/NHN_TEAM_10/tree/dae)|
+|[lightbell03](https://github.com/lightbell03)|[Imheroman](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/tree/young)|[rkdrjsrks](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/tree/gun)|[psm4171](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/tree/min)|[kim-seonghyun](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/tree/seong)|[DaeYoul-Yang](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/tree/yang)|
 ![](https://avatars.githubusercontent.com/u/35277854?v=4)|![](https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAzMzBfMTY2%2FMDAxNjgwMTU5MDQ0NTk2.jKR9jrYt-9nV0vf9cnX1AkkMnW1ZhcfWEHLj_e8noPgg.hOmT6Dk4hBmqvKqIE4oKPrVw3ilLDx6EyMrQb_F4B2Mg.JPEG.ska19121%2FIMG%25A3%25DF20230330%25A3%25DF153057%25A3%25DF460.jpg&type=sc960_832)|![](https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MjNfMTYx%2FMDAxNTkwMjE5MDcwODQ4.oHq4qH7hzfROP7onY4CCLU5fpo4SJtT2Tul40dLkVgIg.ziJyypZB5Wg9j9QMYKwJZidIWSLXSp8MvhWFhxlD_uMg.JPEG.sinsadogs%2FIMG_3480.jpg&type=a340)|![](https://m.the-pet.co.kr/web/product/big/202009/757644c68e4de128c80a4731d28450fa.jpg)|![](https://avatars.githubusercontent.com/u/60726663?v=4)|![](https://m.the-pet.co.kr/web/product/big/202102/1684b97a02396cfc91d5c73344df778f.jpg)|
 |화이팅|화이팅|화이팅|화이팅|화이팅|화이팅|
 
@@ -35,6 +35,7 @@
 전산학 기초와 자바 프로그래밍의 기본기를 다지고, 스프링 공부까지를 목표로
 
 #### [09월 공부 계획](https://github.com/NHN-TEAM-10/Course_1/blob/main/studyPlan09.md)
+#### [10월 공부 계획](https://github.com/NHN-TEAM-10/NHN_TEAM_10_2/blob/main/StudyPlan%20Course%202.md)
 
 
 ### 🤝 Rule
