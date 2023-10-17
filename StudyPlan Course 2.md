@@ -8,13 +8,14 @@
 |:---:|:---:|
 ||Course 2|
 |10월 13일|Chapter 1: Section 1, 2, 3, 4 공부 및 정리|
+|||
 |10월 16일|Chapter 1: Section 5, 6, 7 공부 및 정리|
-|10월 17일|Chapter 1: Section 1, 2, 3 공부 및 정리|
+|10월 17일|Sub course(nhnacademy-bootcamp / java-thread-programming): 1. process vs thread 2. thread__class_extension|
+|10월 18일|Sub course(nhnacademy-bootcamp / java-thread-programming)|
+|10월 19일|Sub course(nhnacademy-bootcamp / java-thread-programming)|
+|10월 20일|NHN Test|
 |||
-|10월 18일|Chapter 2: Section 1, 2, 3 공부 및 정리|
-|10월 20일|Chapter 2: Section 4, 5, 6 공부 및 정리|
 |10월 23일|Chapter 2: Exercises & Quiz|
-|||
 |10월 24일|Chapter 3: Section 1, 2, 3 공부 및 정리|
 |10월 25일|Chapter 3: Section 4, 5, 6 공부 및 정리|
 |10월 27일|Chapter 3: Section 7, 8, 9 공부 및 정리|
