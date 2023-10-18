@@ -1,4 +1,4 @@
-package young.thread;
+package young.thread.thread1_2;
 
 import static java.lang.Thread.sleep;
 

@@ -1,4 +1,4 @@
-package young.thread;
+package young.thread.thread1_2;
 
 public class ThreadCounterMain {
     public static void main(String[] args) {
