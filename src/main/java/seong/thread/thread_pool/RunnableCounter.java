@@ -28,6 +28,10 @@ public class RunnableCounter implements Runnable {
         return maxCount;
     }
 
+    public void setDaemon(boolean on) {
+        thread.setDaemon(on);
+    }
+
     public void start() {
         thread.start();
     }
