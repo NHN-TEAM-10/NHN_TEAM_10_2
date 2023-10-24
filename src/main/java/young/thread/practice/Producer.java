@@ -16,24 +16,32 @@ public class Producer implements Runnable {
     private void produce() {
         Item item = new Item();
         items.add(item);
-        System.out.println("생산자가 물품을 납품하였습니다. -> " + item);
+        System.out.println("생산자가 물품을 생산하였습니다. -> " + item);
+    }
+
+    private void sellItem() {
+        if (store.getItems().size() <= 10) {
+            Item item = this.items.get(0);
+
+            store.buy(item);
+            this.items.remove(0);
+
+            System.out.println("생산자가 물품을 판매하였습니다. -> " + item);
+        }
     }
 
     @Override
     public void run() {
-        interval = ThreadLocalRandom.current().nextInt(1, 10);
-        try {
-            this.produce();
-
-            if (store.getItems().size() <= 10) {
-                store.buy(this.items.get(0));
-                this.items.remove(0);
+        while (true) {
+//            interval = ThreadLocalRandom.current().nextInt(1000, 10000);
+            interval = 1000;
+            try {
+                this.produce();
+                this.sellItem();
+                Thread.sleep(interval);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
-
-            System.out.println("생산자가 새로운 물건을 생산하였습니다. -> " + items.get(items.size() - 1));
-            Thread.sleep(interval);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     }
 }
