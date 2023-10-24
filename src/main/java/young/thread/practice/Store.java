@@ -26,6 +26,7 @@ public class Store {
 
     public void enter(Consumer consumer) { // TODO: 최대 5명까지만 동시 입장 가능
         System.out.println(consumer.getName() + "이 입장하였습니다.");
+//        consumers.execute(consumer);
         consumers.submit(consumer);
     }
 
@@ -34,12 +35,17 @@ public class Store {
         consumer.stop();
     }
 
-    public synchronized void buy(Item item) { // TODO: 판매 후 빈 공간이 생기면 생산자에게 알려준다.
+    public void stop() {
+        this.consumers.shutdown();
+    }
+
+    public synchronized void buy(Item item) throws InterruptedException { // TODO: 판매 후 빈 공간이 생기면 생산자에게 알려준다.
         if (items.size() < 10) {
             items.add(item);
             System.out.println("상점이 물품을 납품받았습니다.");
         } else {
-            System.err.println("상점의 진열 공간이 부족합니다.");
+            System.err.println("물품을 소비하지 못해 대기중입니다.");
+//            wait();
         }
     }
 

@@ -8,6 +8,7 @@ public class Producer implements Runnable {
     private List<Item> items = new ArrayList<>();
     private Store store;
     private int interval = 0;
+    public static final int INTERVAL_TIMES = 1000;
 
     public Producer(Store store) {
         this.store = store;
@@ -16,24 +17,24 @@ public class Producer implements Runnable {
     private void produce() {
         Item item = new Item();
         items.add(item);
-        System.out.println("생산자가 물품을 생산하였습니다. -> " + item);
     }
 
     private void sellItem() {
         if (store.getItems().size() <= 10) {
             Item item = this.items.get(0);
-
-            store.buy(item);
+            try {
+                store.buy(item);
+            } catch (InterruptedException e) {
+                System.err.println("상점의 재고가 가득찼습니다.");
+            }
             this.items.remove(0);
-
-            System.out.println("생산자가 물품을 판매하였습니다. -> " + item);
         }
     }
 
     @Override
     public void run() {
         while (true) {
-//            interval = ThreadLocalRandom.current().nextInt(1000, 10000);
+//            interval = ThreadLocalRandom.current().nextInt(INTERVAL_TIMES, INTERVAL_TIMES * 10);
             interval = 1000;
             try {
                 this.produce();

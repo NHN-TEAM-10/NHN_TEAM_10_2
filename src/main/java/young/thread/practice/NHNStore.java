@@ -10,7 +10,9 @@ public class NHNStore {
             Thread.sleep(1000);
             String consumerName = "Consumer_" + i;
             Thread consumer = new Thread(new Consumer(consumerName, store));
-            consumer.start();
+//            consumer.start();
         }
+
+        store.stop();
     }
 }
