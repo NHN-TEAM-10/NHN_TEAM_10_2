@@ -12,22 +12,18 @@ package young.thread.practice;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Store {
     private List<Item> items;
-    ExecutorService consumers;
+    ThreadGroup consumers;
 
     public Store() { // TODO
         items = new ArrayList<>(10);
-        consumers = Executors.newFixedThreadPool(5);
+        consumers = new ThreadGroup("Consumers");
     }
 
-    public void enter(Consumer consumer) { // TODO: 최대 5명까지만 동시 입장 가능
+    public void enter(Thread consumer) { // TODO: 최대 5명까지만 동시 입장 가능
         System.out.println(consumer.getName() + "이 입장하였습니다.");
-//        consumers.execute(consumer);
-        consumers.submit(consumer);
     }
 
     public void exit(Consumer consumer) {
@@ -35,27 +31,22 @@ public class Store {
         consumer.stop();
     }
 
-    public void stop() {
-        this.consumers.shutdown();
-    }
-
-    public synchronized void buy(Item item) throws InterruptedException { // TODO: 판매 후 빈 공간이 생기면 생산자에게 알려준다.
+    public synchronized void buy(Item item) { // TODO: 판매 후 빈 공간이 생기면 생산자에게 알려준다.
         if (items.size() < 10) {
             items.add(item);
             System.out.println("상점이 물품을 납품받았습니다.");
-        } else {
-            System.err.println("물품을 소비하지 못해 대기중입니다.");
-//            wait();
         }
     }
 
-    public synchronized void sell() throws InterruptedException { // TODO: 물건을 구매하는 것은 동시에 1명만 가능하다.
+    public synchronized void sell() { // TODO: 물건을 구매하는 것은 동시에 1명만 가능하다.
         if (items.size() > 0) {
             items.remove(0);
             System.out.println("상점이 물품을 판매하였습니다.");
-        } else {
-            wait();
         }
+    }
+
+    public ThreadGroup getConsumers() {
+        return consumers;
     }
 
     public List<Item> getItems() {
