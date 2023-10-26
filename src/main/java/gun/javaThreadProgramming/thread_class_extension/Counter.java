@@ -1,6 +1,6 @@
-package gun.javaThreadProgramming;
+package gun.javaThreadProgramming.thread_class_extension;
 
-public class Counter{
+public class Counter {
     String name;
     int count;
 
@@ -22,9 +22,9 @@ public class Counter{
 
 
     public static void main(String[] args) {
-        Counter counter1 = new Counter("Thread",0);
+        Counter counter1 = new Counter("Counter1",0);
         counter1.run();
-        Counter counter2 = new Counter("Thread",0);
+        Counter counter2 = new Counter("Counter2",0);
         counter2.run();
 
         System.out.println("Thread가 중단되었습니다.");
