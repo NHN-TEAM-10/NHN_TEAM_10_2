@@ -20,12 +20,14 @@
 | 10월 23일 |           Sub course(nhnacademy-bootcamp / java-thread-programming): 6. synchronization 7. state           |
 | 10월 24일 |      Sub course(nhnacademy-bootcamp / java-thread-programming): 8. thread_pool 9. daemon 10. practice      |
 | 10월 25일 |                 Sub course(nhnacademy-bootcamp / java-thread-programming): 11. assignment                  |
-| 10월 27일 |                                               DataBase - SQL                                               |
-| 10월 30일 |                                                     미정                                                     |
+| 10월 26일 |                                               DataBase - SQL                                               |
+| 10월 27일 |                                               Thread 마무리, DataBase                                               |
 |         |                                                                                                            |
-| 10월 31일 |                                   Chapter 4: Section 1, 2, 3, 4 공부 및 정리                                    |
-| 11월 1일  |                                   Chapter 4: Section 5, 6, 7, 8 공부 및 정리                                    |
-| 11월 3일  |                                        Chapter 4: Exercises & Quiz                                         |
+| 10월 30일 |                                                     Course2 Chapter2: 1, 2, 3, 4                           |
+| 10월 31일 |                                   Course2 Chapter2: 5, 6, Exercise, Quiz                                    |
+| 11월 1일  |                                   ERD 설계                                    |
+| 11월 2일  |                                        서울 탐방                                         |
+| 11월 3일  |                                        서울 탐방                                         |
 |         |                                                                                                            |
 | 11월 6일  |                                   Chapter 5: Section 1, 2, 3, 4 공부 및 정리                                    |
 | 11월 7일  |                                   Chapter 5: Section 5, 6, 7, 8 공부 및 정리                                    |
