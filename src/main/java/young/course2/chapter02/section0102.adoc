@@ -1,0 +1,60 @@
+# 23.10.30(월) The Basic Java Application
+
+### Syntax
+
+- loops, branches, subroutines같이 프로그램이 어떻게 실행될 것인지 규칙이 정해진 것
+
+### Semantics
+
+- 프로그램이 올바르게 동작을 하는지에 대한 내용
+- 내가 의도한 바와 동일한지
+
+자바는 기계어가 아니라 Java Bytecode로 컴파일되고, interpreter로 실행된다.
+
+Built-in subroutine → language의 일부분으로 이미 정의된 것, 어느 프로그램에서나 사용할 수 있다.
+
+package → group of classes
+
+.class file → 프로그램을 Java bytecode로 변경한 것. Java interpreter에 의해 실행된다.
+---
+
+# Variables and the Primitive Types
+
+### Identifier
+
+- 변수명?
+- 대문자와 소문자를 구분하고, 띄어쓰기를 허용하지 않고, ‘_’를 허용한다.
+
+### reserved words
+
+- public, class, static, if, … 을 의미한다. ⇒ not identifiers
+
+자바는 Unicode character set을 이용한다.
+
+### Compound names
+
+- levels of containment or kind of pat to an item
+- Ex) System.out.println
+
+Variable name → memory에 저장된 data를 참조하는 것.
+
+assignment statement → variable = expression;
+
+### primitive types
+
+- byte, short, int, long → Integer
+- float, double → Real number
+- char → single character
+- boolean → true or false
+
+Computer에서 data는 sequence of bits으로 저장된다.
+
+8진수 → 0으로 시작 / 045 == 37
+
+16진수 → 0x로 시작 / 0x45
+
+2진수 → 0b로 시작 → 0b10110
+
+local variables → subroutine에 declared된 variables
+
+….

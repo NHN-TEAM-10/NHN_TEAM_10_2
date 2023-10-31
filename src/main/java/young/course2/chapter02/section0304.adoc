@@ -1,0 +1,50 @@
+# 23.10.30(월) String, Classes, Objects, and Subroutiens
+
+System.exit(0) → JVM을 shut down 시킨다.
+
+### Function
+
+- data를 검색하거나 계산하는 행위를 하는 subroutine
+- value를 반환한다.
+
+### Class
+
+- static variaibles and subroutines를 보관하는 container
+- 다른 int, double같이 다른 Data를 나타내는 type으로 사용된다.
+
+### Objects
+
+- Class name으로 declaration된 variable들.
+
+### String
+
+- s1.toUpperCase(), s1.toLowerCase(), s1.trim()은 s1의 상태를 바꾸는 것이 아니라 새로운 string을 생성하여 return하는 것이다.
+
+### Enum
+
+- enum value는 대문자로 작성하는데, 권고일 뿐 규칙은 아니다.
+- Enum value는 constant이다.
+- value에 대한 뜻있는 이름을 사용함으로써 가독성이 좋아지고, 특정 type에 대한 error를 예방할 수 있다.
+
+---
+
+# Text Input and Output
+
+System.out.print(x) → x가 String이 아니라면 String으로 변환시킨 후에 standard output으로 전달한다.
+
+### System.out.printf
+
+- System.out.printf는 formatted된 output을 생성하는데 사용할 수 있다.
+- System.out.printf(”%1.2f”, amount); → “%1.2f”를 format string이라고 표현하고, 뒤에 오는 매개변수들은 출력될 값들을 지정해주는 값들이다.
+- %1.2f와 같은 표현을 출력 형식을 정하는 방법은 format specifier(형식 지정자)에 의해 결정된다.
+
+```java
+import textio.TextIO;
+-> textio 폴더에 TextIO.java가 있다는 뜻이다.
+```
+
+System.out은 output을 output desitination인 standard output으로 보낸다.
+
+System.in은 input data를 받을 수 있는 유일한 방법
+
+…
