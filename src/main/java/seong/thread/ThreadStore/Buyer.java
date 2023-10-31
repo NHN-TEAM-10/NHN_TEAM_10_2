@@ -13,7 +13,6 @@ public class Buyer extends Thread {
 
     @Override
     public void run() {
-        while(true){
             try {
                 store.enter();
                 System.out.println(Thread.currentThread().getName() + "번 손님 입장");
@@ -30,6 +29,5 @@ public class Buyer extends Thread {
             }
         }
 
-    }
 }
 

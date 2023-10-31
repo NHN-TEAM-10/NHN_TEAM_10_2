@@ -1,5 +1,8 @@
 package seong.thread.ThreadStore;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 public class Store {
@@ -7,7 +10,8 @@ public class Store {
     private int productCount;
 
     private final Semaphore storeSemaphore = new Semaphore(10);
-    private final Semaphore buySemaphore = new Semaphore(1);
+    private ArrayList<Map<Item, Semaphore>> itemList = new
+
 
     public Store() {
         this.productCount = 0;
@@ -22,20 +26,24 @@ public class Store {
     }
 
     public synchronized void buy() throws InterruptedException {
-        buySemaphore.acquire();
+        while (this.productCount == 0) {
+            wait();
+        }
         if (this.productCount > 0) {
             this.productCount--;
             System.out.println(Thread.currentThread().getName() + "번 손님 물건 구매 " + this.productCount);
+            notifyAll();
         }
-        buySemaphore.release();
     }
 
     public synchronized void sell() throws InterruptedException {
-        if (this.productCount >= maxProductCount) {
+        while (this.productCount >= maxProductCount) {
             wait();
         }
         this.productCount++;
         System.out.println("물건 입고" + this.productCount);
         notifyAll();
+
+
     }
 }
