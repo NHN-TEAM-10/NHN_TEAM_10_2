@@ -1,35 +1,30 @@
-package young.thread.thread3_5;
+package seong.thread;
 
 public class SelfRunnableCounter implements Runnable {
-    private int count;
-    private int maxCount;
-    private Thread thread;
+    int count;
+    int maxCount;
+    Thread thread;
 
     public SelfRunnableCounter(String name, int maxCount) {
         this.maxCount = maxCount;
-        this.count = 0;
+        count = 0;
         thread = new Thread(this, name);
     }
 
     public void start() {
-        thread.start();
-    }
+        this.thread.start();
 
-    public Thread getThread() {
-        return this.thread;
     }
-
     @Override
     public void run() {
-        while (count < maxCount) {
+        while (count <= maxCount) {
             try {
-                ++count;
+                Thread.sleep(1000);
                 System.out.println(thread.getName() + " : " + count);
-                Thread.sleep(500);
-            } catch (InterruptedException ignore) {
+                this.count++;
+            } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }
-
     }
 }
