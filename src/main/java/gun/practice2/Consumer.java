@@ -6,7 +6,7 @@ public class Consumer implements Runnable {
     Store store;
 
     String name;
-    private boolean isExited = false; // 종료 여부를 나타내는 플래그
+
 
     public Consumer(String name, Store store) {
         this.store = store;
@@ -28,5 +28,6 @@ public class Consumer implements Runnable {
             e.printStackTrace();
         }
         store.exit(getName());
+        Thread.currentThread().interrupt();
     }
 }

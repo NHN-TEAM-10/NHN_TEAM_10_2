@@ -7,6 +7,8 @@ public class Main {
         Consumer[] consumers = new Consumer[consumerNames.length];
         Thread[] consumerThreads = new Thread[consumerNames.length];
 
+        ThreadGroup consumerThreadGroup = new ThreadGroup("consumerThreadGroup");
+
         Producer producer = new Producer(store);
         Thread producerThread = new Thread(producer);
 
@@ -14,7 +16,7 @@ public class Main {
 
         for (int i = 0; i < consumerNames.length; i++) {
             consumers[i] = new Consumer(consumerNames[i], store);
-            consumerThreads[i] = new Thread(consumers[i]);
+            consumerThreads[i] = new Thread(consumerThreadGroup, consumers[i]);
             consumerThreads[i].start();
         }
 
@@ -25,6 +27,12 @@ public class Main {
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+        while(true){
+            if(consumerThreadGroup.activeCount()==0){
+                producerThread.interrupt();
+                break;
+            }
         }
     }
 }
