@@ -126,3 +126,104 @@ run()의 수행이 종료된 Thread는 CallStack이 비워지고 사라진다.
 main method 역시 하나의 Thread
 
 **실행중인 사용자 Thread가 하나도 없을 때 프로그램 종료**
+
+Thread object 관리→ Runnable interface를 이용해 Thread를 구현할 경우 thread object의 관리가 필요
+
+1. 생성 후 종료될 때 자동 삭제되도록
+2. 구현되는 class내에 Thread object를 포함시켜 관리
+3. Thread Pool을 이용
+
+### Class Extension과 Interface 구현을 이용한 Thread 구현 비교
+
+| Class 확장 | Interface 구현 |
+| --- | --- |
+| multiple inheritance을 지원하지 않으므로 추가적인 상속 불가능 | Interface에대해 multiple inheritance가 지원 구현 class 확장 가능 |
+| Instance 생성후 바로 실행 가능 | Instance 생성 후 추가적인 Thread object가 요구 |
+| 간단한 class라도 별도의 class 정의 필요 | Runnable interface는 functional interface로 Lamda로 구현 가능 |
+
+### Thread 멈추기
+
+1. 상태 제어 이용 → 중간에 중단할때 내부 흐름이 어떻게 계속 진행될지 상태 표시
+2. interrupt를 활용해 Thread가 sleep이나 wait 같은 대기 상태에서 exception을 발생
+
+### Syncrosization
+
+MultiThread의 경우 프로세스 내의 자원을 공유해서 작업하기 때문에 서로의 작업에 영향을 준다
+
+ex) A Thread가 작업하는 도중에 다른 B Thread에게 제어권이 넘어갔을 때 Thread A가 작업하던 공유 데이터를 Thread B가  임의로 변경하였다면 ThreadA가 받아서 나머지 작업을 마쳤을 때 원래 의도했던 결과가 다를 수 있다.
+
+![스크린샷 2023-10-23 오전 10.33.13.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/d42d9c5e-580f-4492-b88e-64ea79bfe6e2/d19a9a9d-dd78-4d9e-b495-a74072e32d9a/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-10-23_%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB_10.33.13.png)
+
+임계구역: 병렬 컴퓨팅에서 두 개 이상의 process 또는 Thread가 동시 접근이 허용되지 않는 공유자원에 접근하는 코드의 블록
+
+Mutual Exclusion
+
+하나의 공유자원에 race condition 문제를 해결하기 위해 어느 시점에 공유 자원 접근을 하나의 process, thread로 제한하는것
+
+Deadlock
+
+Mutual exclusion 과정에서 자원 접근 권한 획득과 자원 접근 권한 반환 관계의 꼬임으로 발생
+
+1. Hold and Wait(점유와 대기)
+
+2. Circular Wait(순환 대기)
+
+3. Starvaion(기아 상태) 우선 순위가 낮은 process나 thread는 scheduler에 의해 공유 자원에 대한 무한 대기 상태
+
+4. Livelock 중첩된 해당 자원에 대한 작업만 처리하지 못하고 나머지 작업은 처리된다.
+
+**Syncronization(쓰레드 동기화) → 한 쓰레드가 진행 중인 작업을 다른 쓰레드가 간섭하지 못하도록 막는 것.**
+
+method 앞에 synchronized를 붙이는 경우 method 자체가 임계영역으로 설정
+
+Thread는 syncrhonized method가 호출된 시점부터 해당 method가 포함된 object의 lock을 얻어 작업을 수행하다가 method가 종료되면 lock을 변환.
+
+wait()→ syncrhonized 영역에서 lock을 소유한 thread 가 제어권을 양보 WAITING 상태에서 대기
+
+notify(), notifyAll() → syncrhoized 영역에서 WAITING 상태를 다시 RUNNABLE 상태로 변경
+
+### Thread 상태
+
+- NEW - thread 가 생성되고 아직 start()가 호출 되지 않은 상태
+- RUNNABLE - 실행 중 또는 실행 가능한 상태
+- BLOCKED - 동기화블럭에 의해서 일시정지 된 상태(lock이 풀릴 때까지 기다리는 상태)
+- WAITING, TIME_WAITING- Thread가 종료되지는 않았지만 실행가능하지 않은 일시 정지 상태,TIMED_WAITING은 일시정지 기간이 정해진 경우
+- TERMINATED - Thread의 작업이 종료된 상태
+
+### Thread 실행제어
+
+- static void sleep(long millis) →지정된 시간 동안 Thread를 일시정지, 지정한 시간이 지나고 나면, 자동적으로 다시 실행대기상태
+- void join() → 호출한 Thread를 지정된 시간 동안만 기다린다.
+- void interrupt() → sleep()이나 join에 에의해 일시정지 상태인 thread를 깨워 RUNNABLE 상태로 변경
+- void stop()→ Thread를 즉시 종료시킨다.
+- void suspend() → Thread를 일시정지시킨다. resume()을 호출하면 다시 실행 대기 상태.
+- static void yield() → 실행 중에 자신에게 주어진 실행시간을 다른 쓰레드에게 양보하고 자신은 실행 대기 상태
+
+wait() vs sleep()
+
+- Thread가 wait()를 호출할 때마다 보유하고 있는 lock을 해제한 후 WAITING 상태가 된다.
+- Thread가 sleep()을 호출할 때마다 보유하고 있는 잠금과 상관없이 TIMED_WAITING 상태가 된다.
+
+ wait()는 notify() 및 notifyAll()과 함께 thread간 상태 전환에 사용되며 sleep() 는 특정 시간 동안 현재 thread의 실행을 일시 중지하는 데 사용된다.
+
+### Thread pool
+
+JAVA thread pool은 여러개의 thread를 만들어 두고 여러번 재사용 되는 작업자 thread 그룹
+
+thread pool에 남아 있는 thread가 없다면 후에 thread가 생길때까지 해당 작업은 실행되지 못하고 대기상태에 있게 된다.
+
+thread는 작업이 완료되면 다시 thread pool로 돌아오게 되고 대기중인 작업이 있는 경우 다시 실행
+
+thread 생성과 삭제에 따른 시간과 resource를 절약 가능
+
+Deadlock, ThreadLeakage(비정상 종료에 의한 실행 종료), Resource Thrashing(Thread Pool이 클경우 thread 간 context 전환시 느려질수 있다) 이 발생할 수 있다.
+
+Thread Group → 여러 쓰레드를 그룹화 하는 방법
+
+### Daemon Thread
+
+- thread는 user thread와 daemon thread로 나뉜다.
+- JVM은 모든 user thread가 종료 될때가지 프로그램을 실행한다.
+- Daemon thread는 백그라운드에서 동작하는 thread, user thread가 종료될때 자동으로 종료.
+- 주로 main thread나 user thread의 보조 역할 , 특정 작업을 주기적으로 처리하는 thread에 사용
+- JVM은 모든 user thread가 종료되면 daemon thread를 강제로 종료
