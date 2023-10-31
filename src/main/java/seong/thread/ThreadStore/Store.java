@@ -10,7 +10,6 @@ public class Store {
     private int productCount;
 
     private final Semaphore storeSemaphore = new Semaphore(10);
-    private ArrayList<Map<Item, Semaphore>> itemList = new
 
 
     public Store() {
