@@ -18,7 +18,7 @@ public class Store {
     public void enter(String name) {
         try {
             consumerSemaphore.acquire(); // 손님이 입장하기 위한 세마포어 획득
-            System.out.println("매장에 "+name+"이(가) 입장 했습니다.");
+            System.out.println("매장에 " + name + "이(가) 입장 했습니다.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -26,7 +26,7 @@ public class Store {
 
     public void exit(String name) {
         consumerSemaphore.release(); // 손님이 퇴장하여 세마포어 해제
-        System.out.println("매장에 "+name+ "이(가) 가게에서 나갔습니다.");
+        System.out.println("매장에 " + name + "이(가) 가게에서 나갔습니다.");
     }
 
     public synchronized void buy(String name) {
