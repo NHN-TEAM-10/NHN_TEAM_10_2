@@ -1,0 +1,233 @@
+# **Programming in the Small I: Names and Things**
+
+### #2 **Variables and the Primitive Types**
+
+- identifiers는 클래스, 변수 및 서브루틴의 이름을 지정하는 데 사용될 수 있다.
+- camel case : 여러 단어로 구성된 이름일 경우 첫 번째 단어 제외하고 각 단어를 대문자로 작성하는 것
+
+→ HelloWorld, interestRate
+
+**Variables**
+
+변수는 데이터 자체의 이름이 아니라 데이터를 저장할 수 있는 메모리 위치를 나타낸다.
+
+변수는 직접적으로 상자를 가리키고, 상자 안의 데이터와 간접적으로 연결된다.
+
+**Types**
+
+- short : -32768 to 32767
+- int : -2147483648 to 2147483647.
+- long :  -9223372036854775808 to 9223372036854775807.
+- double
+- float
+- boolean : true와 false를 반환하는 하나의 논리값을 보유
+- char : 유니코드 문자 집합에서 하나의 문자를 보유
+
+**Strings and String Literals**
+
+String 타입의 값은 문자들의 시퀀스이다.
+
+‘는 char 리터럴에 사용되고, “는 String 리터럴에 사용된다.
+
+ “\n “hello \n”” —> “hello”를 출력
+
+**Variables in Programs**
+
+컴퓨터가 변수 선언을 실행하면, 변수를 위해 메모리를 할당하고 해당 메모리와 변수의 이름을 연결한다.
+
+### #3 **Strings, Classes, Objects, and Subroutines**
+
+**Built-in Subroutines and Functions**
+
+- Subroutine : 특정 작업을 수행하기 위한 명령어들의 집합. 특정 언어의 문법에 따라 작성되며, 원하는 동작을 수행하도록 설계된다.
+- Subroutine의 호출 : 호출은 서브루틴 이름과 함께 이뤄지며, 프로그램 제어가 해당 위치로 전달되고 정의된 명령문들이 실행된다.
+
+—> Subroutine()이라는 메서드가 실행이 완료되면, 제어가 다시 main 메서드로 돌아간다.
+
+- Statement는 실제 프로그램을 구성하는 실제 문장들을 대신하는 플레이스 홀더이다.
+
+java에서 모든 서브루틴은 클래스 또는 객체에 포함된다. 예를 들어 객체인 String 타입의 값은 해당 문자열을 조작하는 데 사용할 수 있는 미리 정의된 서브루틴이 포함되어 있다.
+
+클래스의 목적 중 하나는 해당 클래스에 포함된 변수와 서브루틴을 함께 그룹화하는 것이다. 이러한 변수와 서브루틴은 클래스의 **정적 멤버(static members)**라고 한다.
+
+정적 변수와 정적 메서드 역시 정적 멤버 중 하나로, 여러 인스턴스 간에 공유되는 변수이다.
+
+**정적 메서드(static method)는 클래스에 속하는 메서드로, 객체의 인스턴스와 관련된 작업을 수행하는 것이 아니라 해당 클래스 자체와 관련된 작업을 수행한다.**
+
+즉, 아래와 같은 객체 인스턴스 생성을 할 필요가 없다.
+
+```java
+MyClass obj = new MyClass();
+obj.myVariable = 10; // 객체 인스턴스 생성
+```
+
+```java
+public class MathUtils {
+    public static int add(int a, int b) {
+        return a + b;
+    }
+}
+
+int sum = MathUtils.add(5, 3) // 정적 메서드인 add()는 객체 인스턴스 생성 없이 바로 호출 가능
+```
+
+Math class의 정적 멤버 함수들
+
+- Math.abs(int a) : 주어진 숫자의 절댓값을 반환한다.
+- Math.sqrt(int a) : 주어진 숫자의 제곱근을 반환한다.
+- Math.pow(double base, double exponent) : 주어진 밑(base)의 거듭제곱(exponent) 값을 계산하여 반환한다.
+- Math.random() : 0이상 1미만의 난수를 생성하여 반환한다.
+- Math.floor(double x) : 주어진 실수를 내림한 정수 값을 반환한다.
+
+**Classes and Objects**
+
+클래스 이름은 변수를 선언하는 데 사용될 수 있다. 이러한 변수들은 한 가지 유형의 값만 보유할 수 있다. 이 경우 값은 객체이다.
+
+java에서 서브루틴은 종종 메서드라는 용어로 지칭된다. 일반적으로 메서드라는 용어는 클래스나 객체에 포함된 서브루틴을 의미한다. 즉, 모든 서브루틴은 메서드이다.
+
+**Operations on Strings**
+
+String class의 함수들
+
+- s1.equals(s2) : return boolean 값, s1과 s2가 동일한 문자열 시퀀스로 구성된 경우 true, 아니면 false
+- s1.equalsIgnoreCase(s2) : s1.equalsIgnoreCase(s2)는 s1과 s2가 동일한 문자열인지 확인하는 또 다른 불리언 값을 가지는 함수
+
+→ s1 = cat일 때, s1.equalsIgnoreCase(”Cat”)는 true를 반환
+
+- **s1.compareTo(s2) :** 두 문자열을 비교하는 정수 값을 반환하는 함수. 문자열이 동일한 경우 반환값은 0이고, s1이 s2보다 작으면 반환값은 0보다 작은 숫자이며, s1이 s2보다 크면 반환값은 0보다 큰 숫자
+- s1.trim() : s1.trim()은 s1에서 시작과 끝에 있는 공백 및 탭과 같은 출력되지 않는 문자가 제거된 새로운 문자열 값을 반환하는 함수. 즉, 공백을 제거한 후 반환
+
+**Introduction to Enums**
+
+**열거형(enum) 값은 대문자로 구성된 이름을 부여하지만, 문법 규칙은 아니다. 열거형 값은 상수로 고정된 값이다.**
+
+### #4 **Text Input and Output**
+
+**A First Text Input Example**
+
+TextIO라는 클래스는 사용자가 입력한 값을 읽기 위한 서브루틴을 정의한다.
+
+TextIO는 textio라는 "패키지"에 정의되어 있습니다. 이는 TextIO.java 파일을 찾을 때 textio라는 폴더 내부 찾는다.
+
+TextIO 클래스의 입력 루틴은 정적 멤버 함수이다.
+
+TextIO.getlnInt로 참조한다. → 매개변수가 없으므로 함수 호출은 TextIO.getlnInt() 형태이다.
+
+- getlnWord()는 공백이 없는 문자열만 반환
+- 다음 공백이나 개행 문자가 나올 때까지 공백이 아닌 문자를 읽는다.
+- 입력 함수인 getln()은 사용자가 입력한 모든 문자, 공백 포함, 그리고 다음 개행 문자까지로 구성된 문자열을 반환
+- TextIO.getln()은 값을 읽기 전에 공백이나 줄 끝을 건너뛰지 않는다.
+
+**Introduction to File I/O**
+
+**TextIO는 파일에 데이터를 작성하고 파일에서 데이터를 읽는 기능이 있다.**
+
+- **TextIO.put**
+- **TextIO.putln**
+- **TextIO.putf**
+-
+
+**Using Scanner for Input**
+
+TextIO와 Scanner의 차이점 :
+
+- 사용자가 입력한 값이 유효한 int값이 아닌 경우, stdin.nextInt()는 값 대신 프로그램을 중단시킨다.
+- 반면 TextIO.getInt()은 사용자에게 값을 다시 입력하라는 프롬프트를 표시한다.
+- 사용자가 입력한 정수 뒤에는 공백(space) 또는 개행 문자(end-of-line)가 있어야 하며, TextIO.getInt()는 숫자가 아닌 문자가 나타날 때 읽기를 중단한다.
+
+다른 타입의 데이터를 읽는 메서드
+
+- stdin.nextDouble(), stdin.nextLong(), 그리고 stdin.nextBoolean()
+- stdin.nextLine() 메서드는 TextIO.getln()과 동등하며, stdin.next()는 TextIO.getWord()와 유사하게 비공백 문자열을 반환
+
+### #5 **Details of Expressions**
+
+**Arithmetic Operators**
+
+%의 일반적인 용도는 주어진 정수가 짝수인지 홀수인지를 시험하는 것이다: N은 N % 2가 0인 경우에는 짝수, N % 2가 1인 경우에는 홀수이다.
+
+—> 실수에도 작동하는 %연산자 ex) 7.52 % 0.5는 0.02
+
+**Increment and Decrement**
+
+y = x++; 문장은 `x`의 값이 6이면 "`y = x++;`"라는 문장이 `x`의 값을 7로 바꾸지만, `y`에 할당된 값은 `x`의 **이전** 값이기 때문에 `y`의 값을 6으로 바꾼다.
+
+`x`가 6이면 "`y = ++x;`"라는 문장은 `x`와 `y`의 값을 모두 7로 변경
+
+**Relational Operators**
+
+```
+A == B       Is A "equal to" B?
+A != B       Is A "not equal to" B?
+A < B        Is A "less than" B?
+A > B        Is A "greater than" B?
+A <= B       Is A "less than or equal to" B?
+A >= B       Is A "greater than or equal to" B?
+```
+
+== 연산자는 두개 객체가 동일한 값을 포함하는지 여부보다, 동일한 메모리 위치에 저장되어 있는지 여부를 검사한다.
+
+- str1.equals(str2) : str1이 str2와 동등한지를 파악하고 동등하면 true, 아니면 false를 반환
+- str1.compareTo(str2) : 두 객체를 비교하여 순서를 결정하는 데 사용되며, 사전 순서로 비교한다.
+
+```java
+String str1 = "Apple";
+String str2 = "Banana";
+
+int result = str1.compareTo(str2);
+
+if (result < 0) {
+    System.out.println("str1 comes before str2"); // 출력: "str1 comes before str2"
+} else if (result > 0) {
+    System.out.println("str1 comes after str2");
+} else {
+    System.out.println("str1 and str2 are equal");
+}
+```
+
+**Boolean Operators**
+
+- 부울 연산자 "and”는 결합된 두 값이 **모두** 참이면 결과는 `true`이고, 결합된 값 중 **하나가** 거짓이면 결과는 `false`이다. 예를 들어 "`(x == 0) && (y == 0)`"은 `x`가 0이고 `y`가 0인 경우에만 `true`
+- 부울 연산자 "or"는 ||로 표현된다. (그것은 수직선 문자 두 개로 되어 있다.) "A || B"라는 표현식은 A가 참이거나 B가 참이거나 둘 다 참일 경우 `true`
+- 부울 연산자 "not"는 단항 연산자
+
+**Conditional Operator**
+
+**boolean-expression** ? **expression1** : **expression2**
+
+값이 true면 expression1을 평가하고, 그렇지 않으면 **expression2를 평가한다.**
+
+```java
+next = (N % 2 == 0) ? (N/2) : (3*N+1);
+```
+
+N이 짝수일 경우 N/2를 next에 할당하고, 홀수일 경우 (3*N+1)을 next에 할당
+
+**Assignment Operators and Type Conversion**
+
+**자료형 변환**(type cast) : 원하지 않는 변환을 강제로 변환
+
+```java
+int A;
+short B;
+A = 17;
+B = (short)A;  // OK; A는 short 자료형의 값으로
+        //자료형 변환이 명시적으로 이루어졌다
+```
+
+- String.valueOf(x) : String 클래스의 정적 멤버 함수로, 문자열로 변환된 x값을 반환한다.
+
+`String.valueOf(42)`는 문자열 "42"이고, `ch`가 char 변수인 경우 `String.valueOf(ch)`는 `ch`의 값인 단일 문자를 가진 길이가 1인 문자열이다.
+
+- Integer.parseInt(str)는 `str`의 값을 int 자료형의 값으로 변환하려고 시도하는 함수 호출이다. 예를 들어 `Integer.parseInt("10")`의 값은 int 값 10이다.
+
+할당 연산자에 대한 몇 가지 변형
+
+```
+x -= y;     // same as:   x = x - y;
+x *= y;     // same as:   x = x * y;
+x /= y;     // same as:   x = x / y;
+x %= y;     // same as:   x = x % y;
+```
+
+**Precedence Rules**
