@@ -1,0 +1,66 @@
+== 23.10.24(화) Thread 8~10 Thread_Pool, Daemon_Thread, 연습문제
+
+== Thread pool (thread 보관 공간)
+
+여러 개의 thread를 만들어 두고 만들어 여러 번 재사용되는 작업자 thread
+그룹을 나타낸다.
+
+* 고정 크기로 생성된 thread pool에 Runnable object를 주고 실행을
+요청하면, thread pool에서 thread를 가져와 실행시킨다.
+* thread pool에 남아 있는 thread가 없다면, thread가 생길 때까지 해당
+작업은 실행되지 못하고 대기 상태에 있게 된다.
+
+.Thread Pool
+image::./image/1.thread_pool.png[Thread Pool]
+
+=== 장점
+
+* Thread 생성과 삭제에 따른 시간과 resource를 절약할 수 있다.
+
+=== 사용 시 주의할 점
+
+*Deadlock*
+
+* Multi-thread와 관련된 모든 프로그램에서 교착 상태가 발생할 수 있다.
+* 작업 간 데이터 교환이 필요한 경우, 실행 작업과 대기 작업의 교착 상태가
+발생할 수 있다.
+
+*Thread Leakage*
+
+* 비정상 종료에 의한 실행 종료
+
+*Resource Thrashing*
+
+* 지나치게 큰 thread pool을 사용할 경우, thread간 context 전환 시
+느려지는 문제가 발생할 수 있다.
+
+=== Thread Group
+
+* Java는 단일 object에서 여러 thread를 그룹화하는 편리한 방법을
+제공한다.
+* 단일 함수 호출로 thread group을 pause, resume 또는 stop할 수 있다.
+* pause, resume, stop 등의 안전성의 이유로 사용하지 말것을 권장함으로
+ThreadGroup 역시 사용하지 않는 것이 좋다.
+
+== User Thread vs Daemon Thread
+
+=== User Thread
+
+* 특별히 Deamon Thread로 설정하지 않은 thread → 일반적으로 생성해서
+사용되는 thread.
+* JVM은 모든 User Thread가 종료될 때까지 프로그램을 실행한다.
+
+=== Daemon Thread
+
+* 백그라운드에서 동작하는 thread, User Thread가 종료될 때 자동으로
+종료된다.
+* 주로 Main Thread나 다른 User Thread의 보조 역할을 수행하거나, 특정
+작업을 주기적으로 처리하는 thread 등에 사용된다.
+* JVM은 모든 User Thread가 종료되면 Daemon Thread를 강제로 종료한다.
+
+=== 정리
+
+* 모든 thread의 생성과 종료를 직접 관리하지 않을 수도 있다.
+* Deamon thread의 우선 순위는 낮으나 조정 가능하다.
+
+…
