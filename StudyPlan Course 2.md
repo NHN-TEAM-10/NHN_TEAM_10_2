@@ -29,17 +29,16 @@
 | 11월 2일  |                                        서울 탐방                                         |
 | 11월 3일  |                                        서울 탐방                                         |
 |         |                                                                                                            |
-| 11월 6일  |                                   Chapter 5: Section 1, 2, 3, 4 공부 및 정리                                    |
-| 11월 7일  |                                   Chapter 5: Section 5, 6, 7, 8 공부 및 정리                                    |
-| 11월 8일  |                                        Chapter 5: Exercises & Quiz                                         |
-|         |                                                                                                            |
-| 11월 10일 |                                     Chapter 6: Section 1, 2, 3 공부 및 정리                                     |
-| 11월 13일 |                                     Chapter 6: Section 4, 5, 6 공부 및 정리                                     |
-| 11월 14일 |                                        Chapter 6: Exercises & Quiz                                         |
-|         |                                                                                                            |
-| 11월 10일 |                                     Chapter 7: Section 1, 2, 3 공부 및 정리                                     |
-| 11월 13일 |                                     Chapter 7: Section 4, 5, 6 공부 및 정리                                     |
-| 11월 14일 |                                        Chapter 7: Exercises & Quiz                                         |
+| 11월 6일  |                                   Course2 Chapter3: Section 1 ~ 5                                    |
+| 11월 7일  |                                   Course2 Chapter3: Section 6 ~ 9, Exercise, Quiz                                    |
+| 11월 8일  |                                        Course2 Chapter4: Section 1 ~ 5                                         |
+| 11월 9일 |                      데이터 베이스 수업 및 과제                                                                                      |
+| 11월 10일 |                                     Course2 Chapter4: Section 6 ~ 8, Exercise, Quiz                                     |
+| 11월 13일 |                                     ㅁㅁㅁ                                     |
+| 11월 14일 |                                        ㅁㅁㅁ                                         |
+| 11월 15일 |                                     ㅁㅁㅁ                                     |
+| 11월 16일 |                                     ㅁㅁㅁ                                     |
+| 11월 17일 |                                        ㅁㅁㅁ                                         |
 |         |                                                                                                            |
 | 11월 15일 |                                     Chapter 7: Section 1, 2, 3 공부 및 정리                                     |
 | 11월 17일 |                                     Chapter 7: Section 4, 5, 6 공부 및 정리                                     |
