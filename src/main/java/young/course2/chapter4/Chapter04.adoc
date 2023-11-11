@@ -1,0 +1,154 @@
+# 23.11.07(화) Chapter4
+
+# Section1 - Black Boxes and Procedural Abstraction
+
+우리는 컴퓨터가 실행해야 할 많은 steps를 걱정할 필요 대신 subroutine의 이름만 기억하고 호출하면 된다.
+
+subroutine은 내부를 볼 수 없기 때문에 black box라고 때때로 언급되기도 한다.
+
+### 블랙박스의 규칙
+
+1. 블랙박스의 인터페이스는 직선적이고, 잘 정의되며, 이해하기 쉬워야 한다.
+2. 블랙박스를 사용하려면 그 구현에 대해 알 필요는 없다.
+그 인터페이스를 아는 것으로 충분하다.
+3. 블랙박스의 구현자는 박스를 사용할 대형 시스템에 대해 알 필요가 없어야 한다.
+
+블랙박스는 세계를 내부와 외부 두 부분으로 나눈다.
+인터페이스는 경계면에 있으며 두 부분을 연결한다.
+
+# Section2 - Static subroutines and Static variables
+
+- 자바의 모든 서브루틴은 어떤 클래스 안에서 정의되어야 한다.
+- 클래스의 한 가지 목적은 관련된 서브루틴과 변수를 함께 그룹화하는 것이다.
+- Static subroutine은 클래스 자체의 member이다. 반면에 non-Static subroutine은 객체가 생성될 때에만 사용되며, subroutine자체가 객체의 member가 된다.
+- subroutine을 method라고 부르는 경우가 종종 있다.
+- subroutine은 호출되기 전까지는 실제로 실행되지 않는다.
+- subroutine에서 지역 변수를 선언할 때, 해당 변수에 값을 할당해야 작업을 수행할 수 있다.
+반면에 멤버 변수는 자동적으로 기본값으로 초기화된다.
+
+# Section3 - Parameters
+
+- subroutine이 블랙박스라면 매개변수는 외부 세계의 정보를 박스로 전달하기 위한 메커니즘을 제공하는 무언가이다.
+- 매개변수는 subroutine 밖에서 초기 값을 얻는다.
+- subroutine에 있는 parameter를 formal parameter 또는 dummy parameter라고 한다. subroutine이 호출될 때 전달되는 매개변수를 actual parameter 또는 argument라고 한다.
+
+# Section4 - Return values
+
+- 값을 반환하는 서브루틴을 함수(Function)이라고 한다.
+
+# Section5 - Lambda expressions
+
+- 함수에 이름을 붙이지 않고도 함수를 정의할 수 있게 함
+
+```java
+static double square( double x ) {
+    return x*x;
+}
+```
+
+원래 대로의 코드처럼 작성하려면 sqaure라는 이름을 붙여야만 하고, 해당 함수는 프로그램의 영구적인 부분이 되어 버린다.
+
+- 함수적 인터페이스(Functional interface)는 람다 표현식으로 표현될 수 있는 서브루틴에 대한 템플릿을 제공한다.
+함수적 인터페이스의 이름은 String, double이 자료형인 것과 같이 자료형이다.
+- 람다에 오는 매개변수는 인터페이스에 정의된 매개변수와 동일해야 하기 때문에 자료형을 지정할 필요가 없다.
+- 매개변수가 정확히 하나 존재하는 경우, 매개변수 목록 주변의 괄호를 생략할 수 있다.
+
+```java
+public interface FunctionR2R {
+    double valueAt( double x );
+}
+
+/**
+ *  함수 f에 관하여, f(start) + f(start+1) + ... + f(end)를 계산한다.
+ *  마지막의 값은 시작 값보다 반드시 크거나 같아야(>=) 한다.
+ */
+static double sum( FunctionR2R f, int start, int end ) {
+    double total = 0;
+    for (int n = start; n <= end; n++) {
+        total = total + f.valueAt( n );
+    }
+    return total;
+}
+
+System.out.print("1부터 100까지의 n에 대하여 n의 제곱의 합은 ");
+System.out.println( sum( x -> x*x, 1, 100 ) );
+System.out.print("1부터 10까지의 n에 대하여 2의 n승의 합은 ");
+System.out.println( sum( num -> Math.pow(2,num), 1, 10 ) );
+```
+
+# Section6 - APIs, Packages, Modules and Javadoc
+
+자바는 플랫폼에 독립(platform—independent)적이다.
+즉, 동일한 프로그램이 Mac OS, Windows, Linux 등 다양한 플랫폼에서 실행될 수 있다.
+
+```java
+javafx.scene.paint.Color rectColor;
+```
+
+다른 클래스처럼 javafx.scene.paint.Color는 자료형으로, 변수와 매개변수를 선언하고 함수의 반환 유형을 지정하는 데 이를 사용할 수 있음을 의미한다.
+
+```java
+import javafx.scene.paint.Color;
+
+Color rectColor;
+```
+
+이것은 "**type-name variable-name**;" 형식의 일반적인 변수 선언일 뿐이다. 물론, 모든 클래스의 전체 이름을 사용하는 것은 지겨운 일이고, 프로그램에서 사용되는 이와 같은 전체 이름은 거의 볼 수 없을 것이다. 자바는 클래스 **가져오기**(importing)를 통해 클래스 전체 이름의 사용을 피하도록 할 수 있다.
+
+jar file → 많은 클래스를 포함할 수 있는 단일의 파일
+
+### 자바독
+
+- 자바 API에 대한 설명서
+- /**로 시작한다.
+- 서브루틴 바로 앞에 배치되어야 한다.
+- 서브루틴, 멤버 변수, 클래스에 대해 자바독 주석을 달 수 있다.
+
+```java
+// 예시
+
+/**
+ * 이 서브루틴은 주어진 폭과 높이로 직사각형의 면적을 계산한다.
+ * 폭과 높이는 반드시 양수여야 한다.
+ * @param width 직사각형의 한쪽 면의 길이
+ * @param height 직사각형의 다른쪽 면의 길이
+ * @return 직사각형의 면적 -> void가 아닐 때에만
+ * @throws IllegalArgumentException 폭 또는 높이가
+ *    음수인 경우.
+ */
+public static double areaOfRectangle( double length, double width ) {
+    if ( width < 0  ||  height < 0 )
+       throw new IllegalArgumentException("면의 길이는 반드시 양수여야 합니다.");
+    double area;
+    area = width * height;
+    return area;
+}
+```
+
+# Section7 - More on Program Design
+
+### Precondition(전제 조건)
+
+- 서브루틴이 호출될 때 서브루틴이 올바르게 작동하려면 반드시 참이어야 하는 것
+- Ex) Math.sqrt(x)의 경우, 매개변수 x가 음수의 제곱근을 취할 수 없기 때문에 x ≥ 0이 전제 조건이다.
+
+### Postcondition(사후 조건)
+
+- 서브루틴의 책무를 나타낸다.
+- 서브루틴이 실행된 후에 참이 되어야 하는 무언가.
+
+# Section8 - The truth about Declarations
+
+```java
+int count;    // count란 이름의 변수를 선언.
+count = 0;    // count에 초기 값을 부여.
+
+int count = 0;  // count를 선언하고 초기 값을 할당.
+```
+
+컴퓨터는 두 개의 코드를 여전히 1. count를 선언한 다음 2. 새로 생성된 변수에 값 0을 할당하는 과정으로 동일하게 실행한다.
+
+자바 인터프리터가 클래스를 불러들이는 즉시 정적 멤버 변수가 생성되며, 해당 초기화도 그 때에 이루어진다.
+멤버 변수의 경우, 이는 단순히 할당문이 뒤따르는 선언의 축약이 아니다.
+
+…
