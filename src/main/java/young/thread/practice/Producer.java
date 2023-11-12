@@ -5,47 +5,35 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Producer implements Runnable {
-    private List<Item> items;
+    private List<Item> items = new ArrayList<>();
     private Store store;
     private int interval = 0;
-    public static final int INTERVAL_TIMES = 1000;
-    public static final int ITEMS_SIZE = 100;
 
     public Producer(Store store) {
         this.store = store;
-        this.items = new ArrayList<>(ITEMS_SIZE);
     }
 
     private void produce() {
         Item item = new Item();
         items.add(item);
-    }
-
-    private void sellItem() {
-        if (store.getItems().size() <= 10) {
-            Item item = this.items.get(0);
-            store.buy(item);
-            this.items.remove(0);
-        }
-    }
-
-    public void stop() {
-        Thread.currentThread().interrupt();
+        System.out.println("생산자가 물품을 납품하였습니다. -> " + item);
     }
 
     @Override
     public void run() {
-        int size = 0;
-        while (ITEMS_SIZE > size) {
-            interval = ThreadLocalRandom.current().nextInt(INTERVAL_TIMES, INTERVAL_TIMES * 10);
-            try {
-                this.produce();
-                this.sellItem();
-                Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        interval = ThreadLocalRandom.current().nextInt(1, 10);
+        try {
+            this.produce();
+
+            if (store.getItems().size() <= 10) {
+                store.buy(this.items.get(0));
+                this.items.remove(0);
             }
-            size++;
+
+            System.out.println("생산자가 새로운 물건을 생산하였습니다. -> " + items.get(items.size() - 1));
+            Thread.sleep(interval);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }

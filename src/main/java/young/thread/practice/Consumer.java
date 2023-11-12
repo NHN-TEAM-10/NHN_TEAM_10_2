@@ -5,10 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Consumer implements Runnable {
     private String name;
     private Store store;
-    private int count = 0;
-    private final int END_NUMBERS = 3;
-    public final static int INTERVAL_TIMES = 1000;
-    private int interval;
+    private int interval = 0;
+    public static int consumerNumber = 1;
+    private int itemCountNumber = 0;
 
     public Consumer(String name, Store store) {
         this.name = name;
@@ -25,19 +24,18 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (count < END_NUMBERS) { // 물품 구매 횟수
-            interval = ThreadLocalRandom.current().nextInt(INTERVAL_TIMES, INTERVAL_TIMES * 10);
-            itemBuying();
-            count++;
-
-            try {
+        try {
+            while (itemCountNumber > 3) {
+                interval = ThreadLocalRandom.current().nextInt(1, 10);
+                store.enter(this);
+                itemBuying();
                 Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            store.exit(this);
         }
-
-        store.exit(this);
     }
 
     public String getName() {
