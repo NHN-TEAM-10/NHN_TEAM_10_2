@@ -1,0 +1,100 @@
+# 23.11.10(금) Chapter05 Section03
+
+### StringBuilder를 사용하는 이유
+
+- 문자열은 + 연산자를 사용하여 형성될 수 있지만, 이것은 항상 효율적인 방법은 아니다.
+- str이 *String* 이고 ch가 문자인 경우 "str = str + ch" 명령을 실행하면, str의 복사본 및 그 끝에 ch값이 덧붙여진 **완전히 새로운 문자열이 생성**된다.
+- 문자열을 복사하는 일은 시간이 조금 걸린다.
+- 때문에 StringBuilder를 사용.
+
+모든 프로그래머는 새로운 프로그램에서 재사용 가능한 코드 조각(snippet)으로 표현되는 기법과 전문지식을 축적하면서 자르고 붙이기(cut-and-paste)의 신뢰성 있는 방법을 사용한다.
+
+이전 코드는 새 프로그램에 물리적으로 복사된 다음 필요에 따라 사용자 정의에 맞게 편집된다.
+
+잘 설계된 클래스는 편집 없이도 재사용할 수 있는 소프트웨어 구성요소이다.
+
+잘 설계된 클래스는 특정 프로그램에서 특정 작업을 수행하기 위해 세심하게 제작된 것은 아니다.
+→ 추상화를 잘하기
+
+- 소프트웨어 생명주기
+
+모든 명사에 밑줄을 그어라 → 프로그램 설계에서 클래스 또는 객체가 되기 위한 후보군으로 고려되어야 한다.
+
+모든 동사에 밑줄을 그어라 → method의 후보군이다.
+
+# Section5 - Inheritance, Polymorphism and Abstract Class
+
+클래스는 동일한 구조와 행위를 공유하는 객체들의 집합을 나타낸다.
+
+protected(access modifier)는 그것이 정의된 클래스의 하위 클래스에서 사용될 수 있지만, 하위 클래스가 아닌 곳에서는 사용될 수 없다.
+동일한 패키지에서도 접근이 가능하다.
+
+여러 클래스가 동일한 수퍼클래스의 서브클래스로 선언될 수 있다.
+이러한 서브클래스는 형제클래스라고도 한다.
+
+```java
+class Vehicle {
+   int registrationNumber;
+   Person owner;  // (Assuming that a Person class has been defined!)
+   void transferOwnership(Person newOwner) {
+       . . .
+   }
+   . . .
+}
+
+class Car extends Vehicle {
+   int numberOfDoors;
+   . . .
+}
+
+class Truck extends Vehicle {
+   int numberOfAxles;
+   . . .
+}
+
+class Motorcycle extends Vehicle {
+   boolean hasSidecar;
+   . . .
+}
+```
+
+A라는 클래의 reference를 가질 수 있는 변수는 A의 subclass의 reference도 가질 수 있다.
+
+따라서 이러한 문장도 가능하다.
+
+```java
+Vehicle myVehicle = new Car();
+
+// sub class가 super class로 될 수 있음.
+// 하지만 type casting없이 super class가 sub class로 될 수는 없다.
+// sub class에는 더 많은 제약이 생기기 때문이다.
+// -> super class에는 없는 제약 또는 기능들이 sub class에는 있을 수도 있기 때문에
+```
+
+```java
+System.out.println("Vehicle Data:");
+System.out.println("Registration number: " + myVehicle.registrationNumber);
+
+if (myVehicle instanceof Car) {
+    System.out.println("Type of vehicle: Car");
+    Car myCar;
+    myCar = (Car)myVehicle; // Type-cast를 사용하여 numberOfDoors에 액세스!
+    System.out.println("Number of doors: " + myCar.numberOfDoors);
+}
+
+// Car에 있는 numberOfDoors에 접근하고 싶기 때문에 type casting
+```
+
+다형성은 단지 다른 객체들이 같은 메세지를 다른 방식으로 답을 할 수 있다는 것.
+
+### Abstract class
+
+- 객체를 생성하는 데 사용되지 않고, 오직 오직 하위 클래스를 만드는 기반으로만 사용되는 클래스
+- 오직 그 하위 클래스의 공통 속성을 표현하기 위해 존재
+
+모든 클래스는 Object 클래스의 subclass이다.
+
+### Final
+
+- final class는 하위 클래스를 만드는 기반으로 사용될 수 없다.
+- 메소드에 final이 붙은 메소드는 override될 수 없다.
