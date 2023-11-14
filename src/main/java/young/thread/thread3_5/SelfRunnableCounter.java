@@ -1,6 +1,6 @@
 package young.thread.thread3_5;
 
-public class SelfRunnableCounter implements Runnable{
+public class SelfRunnableCounter implements Runnable {
     private int count;
     private int maxCount;
     private Thread thread;
@@ -13,6 +13,10 @@ public class SelfRunnableCounter implements Runnable{
 
     public void start() {
         thread.start();
+    }
+
+    public Thread getThread() {
+        return this.thread;
     }
 
     @Override
