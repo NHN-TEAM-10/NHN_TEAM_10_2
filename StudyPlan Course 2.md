@@ -37,9 +37,9 @@
 |         |
 | 11월 13일 |                                      Course2 Chapter5: Section 1 ~ 5                                       |
 | 11월 14일 |                                   Course2 Chapter5: Section 6 ~ Exercise                                   |
-| 11월 15일 |                                              Course2 Chapter8                                              |
-| 11월 16일 |                                                     DB                                                     |
-| 11월 17일 |                                      Course2 Chapter8 + DB Assignment                                      |
+| 11월 15일 |                                              Monte Carlo Assaignment                                              |
+| 11월 16일 |                                                     DB (?)                                                    |
+| 11월 17일 |                                      Course2 Chapter8 + DB Assignment (?)                                      |
 |         |                                                                                                            |
 | 11월 20일 |                                              Networking study                                              |
 | 11월 21일 |                                        Snc Assignment in Networking                                        | 
