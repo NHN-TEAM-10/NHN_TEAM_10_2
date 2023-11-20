@@ -1,0 +1,30 @@
+# summray
+
+
+programming 언어는 왜 변수를 사용하기 전에 선언하는이유는 의도치 않게
+변수가 생성되는것을 방지하고 발생할 수 있는 모든 종류의 버그를 방지할수
+있기 때문이다.
+
+precondition이란 프로그램이 올바르게 실행되기 위해 프로그램 특정
+시점에서 계속 참이어야 하는 조건이다. precondition의 예를 들면 x =
+A[i]가 있을때 A ≠ null , 0 ≤ i ≤ A.length 가 있다. precondition은 올바른 프로그램을 작성하는데 도움이 된다. preconditon은
+특정시점에서 계속 참이어야하는조건이다. if, try문을 사용하여 특정
+시점에서 precondition이 참인지 확인해야 한다.
+
+while문을 사용한 binary search algorithm에서 loop invariant를 찾으면 target값인 N은 lowerBound, upperBound 사이에 있다.
+
+loop 시작 전 lowBound와 upperBound는 배열 전체를 의미하기때문에 참이고
+
+loop 동작 도중 배열이 정렬됐다면 lowBound, upperBound가 수정돼도 참이다.
+
+loop는 upperBound가 lowerBound보다 작으면 종료되는데 이는 N이 없음을
+의미한다.
+
+Throwable class의 역할은 이를 상속받은 object들이 throw statement,
+try..catch statement를 사용할 수 있게 하는 것이다. exception의 정보를
+handled될때까지 가져간다.
+ checked exceptions는 mandatory exception handling이 필요하다. 이것의
+의미를 작성하여라.
+
+일반적으로 프로그래머의 제어 범위를 넘어선 오류이다. Error,
+RuntimeException을 제외한 오류이며, 메서드 헤더에 throw절을 명시해야한다.
