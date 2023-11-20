@@ -1,0 +1,131 @@
+programming in large : subroutine
+
+복잡한 프로그램을 나누어 관리하는 방법 : subroutine
+
+[arabic]
+. black box
+. static subroutine and static variable
+. parameter
+. return
+. lambda statement
+
+== 1. black box
+
+subroutine은 complexity를 다루는 주요한 도구이다. chunking으로 복잡한
+개념을 하나의 개념으로 처리하기 때문
+
+black box 3가지 규칙
+
+[arabic]
+. The interface of a black box should be fairly straightforward,
+well-defined, and easy to under stand
+. To use a black box, you shouldn’t need know anything about its
+implementation all you need to know is its interface
+. The implementor of a black box should not need to know anything about
+the larger systems in which the box will be used.
+
+interface는 blackbox가 무엇을 하고 어떻게 제어될수 있는지에 대한
+specification.
+
+CS 용어로 바꾸어 말하면 ``subroutine의 interface는 syntatic, semantic
+요소를 가진다''.
+
+== 2. static subroutine and static variable
+
+static subroutine은 class의 member
+
+non-static subroutine은 object의 member
+
+subroutine definition
+
+[source,java]
+----
+modifiers return-type subroutine-name (parameter-list) {
+    statements
+}
+----
+
+member variable → 프로그램의 표현식에 상관없이 Variable의 값을 동일한
+메모리에서 가져옴.
+
+자동으로 기본값으로 초기화 됨.
+
+== 3. parameter
+
+subroutine이 블랙박스라면 ``parameter''는 외부 세계의 정보를 박스로
+전달하는 것.
+
+subroutine 호출문에서 매개변수의 값을 반드시 제공해야 한다
+
+subroutine이 독립적이지 않다는 것을 기억해야한다. 매개변수에 적절한 값을
+제공하는 것은 subroutine 호출문책임.
+
+``contract''란 subroutine의 호출자가 허용되는 값을 제공한다면
+subroutine이 무엇을 할지 알려주는 것이다.
+
+허용되지 않은 값이 들어올경우 Exception을 던진다. 이렇게하면
+subroutine을 즉시 중단 시키게 된다.
+
+프로그램이 계속 작동되려면 subroutine의 호출이 try부분에 있어야한다.
+
+global parameter는 subroutine interface의 일부로 간조되어야 한다.
+parameter를 통한 소통보다 가시성이 떨어지는 Sneaky back-door 소통을 하기
+때문에 blackbox interface의 규칙을 위반할 위험이 있다.
+
+== 4. return
+
+값을 반환하는 subroutine을 function이라고 한다.
+
+초보자의 실수 : function은 해답을 출력하는것이 아닌 return 해야한다!!!
+
+function의 임무는 ``값''을 계산하여 호출된 지점으로 return하는 것이다.
+
+== 5. lambda expression
+
+lambda expression : subroutine을 function literal의 일종
+
+[source,java]
+----
+( parameter-list ) -> { statements }
+----
+
+functional interface : function data의 type
+
+[source,java]
+----
+public interface FunctionR2R {
+    double valueAt( double x );
+}
+----
+
+lambda expression으로 표현 될수있는 subroutine에 대한 template를
+제공한다.
+
+functional interface의 이름은 type이다.
+
+위의 경우 Parameter가 double 이기때문에 lambda expression의 parameter
+type을 지정할 필요 없다.
+
+lambda 표현식은 매개변수로 사용될 수도 있다.
+
+[source,java]
+----
+static double sum( FunctionR2R f, int start, int end ) {
+    double total = 0;
+    for (int n = start; n <= end; n++) {
+        total = total + f.valueAt( n );
+    }
+    return total;
+}
+
+System.out.println( sum( x -> x*x, 1, 100 ) );
+----
+
+*method reference*
+
+[source,java]
+----
+Math::sqrt
+----
+
+lambda expression의 shorthand.

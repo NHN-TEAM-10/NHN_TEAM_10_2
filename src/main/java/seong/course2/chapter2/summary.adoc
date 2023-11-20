@@ -1,0 +1,121 @@
+# Chapter 2
+
+Programming in the small → Names and Things
+
+복잡한 프로그램을 만드는건 어렵지만 구조를 명확히 하면 명확해진다.
+
+세부사항을 채우는 것을 coding이라고 한다. 코딩은 기계처럼 일하는 상태와 비슷하다.
+
+2.1 The Basic Java Application
+
+다른 사람이 쉽게 이해할수 있도록 코드 작성해야한다. (programatics)
+
+복잡한 프로그램을 설계하는 법도 배워야한다.
+
+메서드 이름은 서브루틴을 호출하는데 사용한다.
+
+클래스는 프로그램을 정의하기 위해 main문(서브루틴) 을 포함해야한다.
+
+2.2 Variables and the Primitive Types
+
+2.2.1 Variables
+
+자바같은 High-level language는 데이터를 refer하기위해 name를 사용한다.
+
+자바에서 데이터를 변수에 삽입하는 유일한 방법은 “assignment”이다.
+
+<variable> = <expression>
+
+😶 assignment statement는 특정 시간에 실행되는 명령어이다. statement와는 다르다.
+
+> (Note, by the way, that an assignment statement is a command that is executed by the computer at a certain time. It is not a statement of fact. For example, suppose a program includes the statement “rate = 0.07;”. If the statement “interest = rate * principal;” is executed later in the program, can we say that the principal is multiplied by 0.07? No! The value of rate might have been changed in the meantime by another statement. The
+>
+>
+> meaning of an assignment statement is completely different from the meaning of an equation
+> in mathematics, even though both use the symbol ”=”.)
+>
+
+2.2.2 Types
+
+primitive type은 유한한 수의 bit로만 저장한다
+
+2.2.3 Literals
+
+constant value의 일종이다.
+
+2.2.4 Strings and String Literals
+
+자바는 primitive보다  object를 많이 사용한다.
+
+2.2.5 Variables in Programs
+
+변수를 선언하면 변수를 위한 메모리를 설정하고, 변수이름을 메모리와 연결한다.
+
+2.3 Strings, Classes, Objects, and Subroutines
+
+서브루틴 : 프로그램 명령어의 집합.
+
+2.3.2 Classes and Objects
+
+클래스는 static variables와 subroutines의 container가 될 수 있다.
+
+또한 object를 describe하기 위해 사용한다.
+
+클래스의 역할
+
+1. static variables와 subroutines의 container
+2. object를 describe하기 위해 사용 (type)
+
+2.3.3 Operations on Strings
+
+String은 불변객체라서 변하지 않는다. String의 operation은 새로운 String을 반환한다.
+
+“+” operator를 사용하여 두 string을 concatenate 할 수 있다.
+
+2.3.4 Text Blocks: Multiline Strings
+
+자바 17부터 새로운 string literal이 추가됐다. text block이라고 부른다.
+
+```java
+String poem = """
+           As I was walking down the stair,
+              I met a man who wasn’t there.
+           He wasn’t there again today.
+              I wish, I wish he’d go away!""";
+```
+
+2.3.5 Introduction to Enums
+
+enum으로 새로운 type을 생성할 수 있다.
+
+enum은 object로서 subroutines을 포함할 수있다.
+
+2.4 Text Input and Output
+
+2.4.1 Basic Output and Formatted Output
+
+System.out.print(x)는 매개변수 x가 문자열이 아닌경우 문자열 유형으로 변환하여 출력한다.,
+
+첫번째 매개변수는 문자열 출력 형식을 결정하며 format String 이라고 부른다.
+
+```java
+System.out.printf( "%1.2f", amount );
+```
+
+2.5 Details of Expressions
+
+2.5.2 Increment and Decrement
+
+++, —연산자의 동작이 이해되지 않는다면 stand-alone statement에서 사용하면 된다.
+
+2.5.3 Relational Operators
+
+== 연산자는 객체가 같은 값을 가지는지 확인하는것이 아닌 객체 메모리 위치를 비교한다.
+
+따라서 String은 equals(), compareTo()를 사용하여 비교한다.
+
+2.5.6 Assignment Operators and Type Conversion
+
+어떤 경우에는 컴퓨터가 자동으로 변수 type을 convert하기도한다
+
+자동으로 type convert가 되지 않는 경우, 사용자가 직접 “type cast”를 할수 있다.
