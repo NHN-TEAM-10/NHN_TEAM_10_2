@@ -1,4 +1,4 @@
-package gun.javaThreadProgramming;
+package gun.javaThreadProgramming.thread_class_extension;
 
 public class ThreadCounter extends Thread{
     String name;
@@ -22,8 +22,8 @@ public class ThreadCounter extends Thread{
     }
 
     public static void main(String[] args) {
-        ThreadCounter counter1 = new ThreadCounter("Thread1",0);
-        ThreadCounter counter2 = new ThreadCounter("Thread2",0);
+        ThreadCounter counter1 = new ThreadCounter("ThreadCounter1",0);
+        ThreadCounter counter2 = new ThreadCounter("ThreadCounter2",0);
 
         counter1.start();
         counter2.start();
